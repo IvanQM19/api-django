@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección 15</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        /* Agrega estilos personalizados aquí si es necesario */
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Sección 15</h1>
+
+        <!-- Mostrar los datos reducidos en una tabla -->
+        <div class="mb-4">
+            <h3>Datos reducidos</h3>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>c1</th>
+                        <th>c2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in reduced_data|slice:":10" %}  <!-- Limitar a los primeros 10 registros -->
+                    <tr>
+                        <td>{{ data.c1 }}</td>
+                        <td>{{ data.c2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Selección de Características</h2>
+                <p>F1 Score: {{ f1_score_reduced }}</p>
+                <h3>Top Características Seleccionadas:</h3>
+                <ul>
+                    <li>c1</li>
+                    <li>c2</li>
+                    <li>c3</li>
+                    <li>c4</li>
+                    <li>c5</li>
+                    <li>c6</li>
+                    <li>Clase</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <!-- Visualización de las gráficas -->
+                <h3>Visualización del Conjunto de Datos Reducido</h3>
+                <div>
+                    <figure>
+                        <figcaption>Diagrama de Dispersión del Conjunto de Datos Reducido</figcaption>
+                        <img src="data:image/png;base64,{{ scatter_plot }}" alt="Diagrama de Dispersión del Conjunto de Datos Reducido" class="img-fluid">
+                    </figure>
+                </div>
+
+                <h3>Visualización del Límite de Decisión</h3>
+                <div>
+                    <figure>
+                        <figcaption>Gráfico del Límite de Decisión</figcaption>
+                        <img src="data:image/png;base64,{{ decision_boundary_plot }}" alt="Gráfico del Límite de Decisión" class="img-fluid">
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mostrar otras variables -->
+        <div>
+            <h3>Información Adicional</h3>
+            <p>Texto de Información: {{ info_text }}</p>
+            <p>F1 Score de Validación: {{ f1_val_score }}</p>
+            <p>F1 Score de Prueba: {{ f1_test_score }}</p>
+            <p>Proporción de Varianza:</p>
+            <ul>
+                <li>[{{ explained_variance_ratio|join:", " }}]</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias opcionales (jQuery) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

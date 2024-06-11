@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Data Frame</h1>
+    <p>Número de características: {{ num_features }}</p>
+    <p>Longitud del conjunto de datos: {{ dataset_length }}</p>
+    <pre>{{ info_text }}</pre>
+    <table>
+        <thead>
+            <tr>
+                {% for column in columns %}
+                <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if feature_plot %}
+    <h1>Visualización de Características</h1>
+    <img src="data:image/png;base64,{{ feature_plot }}" alt="Feature Plot">
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 16</title>
+</head>
+<body>
+    <h1>Section 16</h1>
+    <h2>Model Selection</h2>
+
+    <h3>Train Data:</h3>
+    <p>X_train: {{ X_train }}</p>
+    <p>y_train: {{ y_train }}</p>
+
+    <h3>Validation Data:</h3>
+    <p>X_val: {{ X_val }}</p>
+    <p>y_val: {{ y_val }}</p>
+
+    <h3>Test Data:</h3>
+    <p>X_test: {{ X_test }}</p>
+    <p>y_test: {{ y_test }}</p>
+
+    <h3>Grid Search Results</h3>
+    <p>Best Parameters (Grid): {{ best_params_grid }}</p>
+    <p>Best Estimator (Grid): {{ best_estimator_grid }}</p>
+    <table>
+        <thead>
+            <tr>
+                <!-- Encabezados de tabla -->
+                <th>Mean Test Score</th>
+                <th>Parameters</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in cv_results_grid.params %}
+            <tr>
+                <!-- Contenido de la tabla -->
+                <td>{{ cv_results_grid.mean_test_score.forloop.counter0 }}</td>
+                <td>{{ result }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Randomized Search Results</h3>
+    <p>Best Parameters (Randomized): {{ best_params_rnd }}</p>
+    <p>Best Estimator (Randomized): {{ best_estimator_rnd }}</p>
+    <table>
+        <thead>
+            <tr>
+                <!-- Encabezados de tabla -->
+                <th>Mean Test Score</th>
+                <th>Parameters</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in cv_results_rnd.params %}
+            <tr>
+                <!-- Contenido de la tabla -->
+                <td>{{ cv_results_rnd.mean_test_score.forloop.counter0 }}</td>
+                <td>{{ result }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p>F1 Score on Train Set: {{ f1_score_train }}</p>
+    <p>F1 Score on Validation Set: {{ f1_score_val }}</p>
+</body>
+</html>

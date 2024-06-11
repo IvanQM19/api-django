@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnicas de selección del modelo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Primeras filas del DataFrame</h1>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        {{ df_head|safe }} <!-- Uso de safe para interpretar HTML en lugar de escaparlo -->
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Detalles del conjunto de datos</h1>
+                <p>Longitud del conjunto de datos: {{ df_length }}</p>
+                <p>Número de características del conjunto de datos: {{ df_num_features }}</p>
+                <p>Distribución de la clase: {{ class_distribution }}</p>
+                <p>Valores faltantes en el conjunto de datos: {{ missing_values }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Análisis Visual de Características</h2>
+                <img src="data:image/png;base64,{{ image_base64 }}" alt="Data Features" style="width:100%;">
+            </div>
+        </div>
+
+        <!-- Nuevo bloque para imagen api17.png -->
+        <div class="row">
+            <div class="col-md-12">
+                <h1> Representación gráfica de dos características </h1>
+                <a href="https://ibb.co/n8hkQ17"><img src="https://i.ibb.co/KzCyVs2/api17.png" alt="api17" border="0"></a>
+               
+                
+                <h1>
+                    Tablas
+                </h1>
+                <p> Label 4 has 2483 samples - 1 are malicious samples <br>
+
+                    Label 4 has 16923 samples - 0 are malicious samples <br>
+                    
+                    Label 4 has 310 samples - 267 are malicious samples <br> 
+                    
+                    
+                </p>
+                <h1> Evaluación de Resultados </h1>
+                <p> 
+                    ('Purity Score:', 0.9990590118922639) <br>
+                    
+                    ('Shiloutte: ', 0.17757501083344457) <br>
+                    
+                    ('Calinski harabasz: ', 40536.84633027995) <br>
+                </p> 
+
+
+                <h1> 18 Deteccion de transacciones bancarias fraudalentas </h1>
+                <a href="https://ibb.co/GtqSNYF"><img src="https://i.ibb.co/KLJvS4m/api18-1.png" alt="api18-1" border="0"></a>
+                <h3> Problemas típicos que pueden resolverse con DBSCAN </h3>
+                <a href="https://ibb.co/G3n6zKB"><img src="https://i.ibb.co/7Njfsw8/img18-2.png" alt="img18-2" border="0"></a>
+                <a href="https://ibb.co/qFCMb5T"><img src="https://i.ibb.co/0VKjPtH/img18-3.png" alt="img18-3" border="0"></a>
+                <p>
+                    Label -1 has 1 samples - 1 are malicious samples <br>
+                    Label 0 has 499 samples - 499 are malicious samples <br>
+                    Label 1 has 500 samples - 0 are malicious samples <br>    
+                </p> 
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

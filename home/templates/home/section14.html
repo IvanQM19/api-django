@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección 14</title>
+</head>
+<body>
+    <h1>Sección 14</h1>
+    <h2>Resumen del Conjunto de Datos</h2>
+    <h3>Primeras 10 filas del conjunto de datos:</h3>
+    <pre>{{ df.head|safe }}</pre>
+
+    <h3>Resumen estadístico del conjunto de datos:</h3>
+    <pre>{{ df.describe|safe }}</pre>
+
+    <h3>Información sobre el conjunto de datos:</h3>
+    <pre>{{ df.info|safe }}</pre>
+
+    <h3>Importancia de las Características:</h3>
+    <ul>
+        {% for key, value in feature_importances_dict.items %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Columnas con mayor relevancia para el algoritmo:</h3>
+    <ul>
+        {% for column in columns %}
+            <li>{{ column }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Primeras 10 filas del conjunto de datos reducido:</h3>
+    <table>
+        <thead>
+            <tr>
+                {% for column in X_train_reduced.columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in X_train_reduced.values %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Puntuación F1 después de reducir características:</h3>
+    <p>{{ f1_score_val_reduced }}</p>
+</body>
+</html>
